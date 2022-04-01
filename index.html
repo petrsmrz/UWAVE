@@ -55,13 +55,13 @@
               log("Code: 500-161-30");
               
 
-              //log('Connecting to GATT Server...');
+              log('Connecting to GATT Server...');
               const server = await device.gatt.connect();
 
-              //log('Getting caliper Service...');
+              log('Getting caliper Service...');
               const service = await server.getPrimaryService('7eafd361-f150-4785-b307-47d34ed52c3c');
-              //log("Got service");
-              //console.log(service);
+              log("Got service");
+              console.log(service);
 
               const notif_characteristics = await service.getCharacteristic('7eafd361-f151-4785-b307-47d34ed52c3c');
               //log("Notification chararacteristics " + JSON.stringify( notif_characteristics ) );
