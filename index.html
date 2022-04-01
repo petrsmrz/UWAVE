@@ -45,8 +45,8 @@
               //log("Requesting caliper device");
 
               //const options = {filters: [{ services: ['7eafd361-f150-4785-b307-47d34ed52c3c']}]}
-              const options = {filters: [{ name: 'UWAVE'}]};
-             // const options = {filters: [{ name: 'UWAVE'}], optionalServices: ['7eafd361-f150-4785-b307-47d34ed52c3c']};
+              //const options = {filters: [{ name: 'UWAVE'}]};
+             const options = {filters: [{ name: 'UWAVE'}], optionalServices: ['7eafd361-f150-4785-b307-47d34ed52c3c']};
               const device = await navigator.bluetooth.requestDevice(options);
               //const device = await navigator.bluetooth.requestDevice( {acceptAllDevices: true,  optionalServices: ['c1b25000-caaf-6d0e-4c33-7dae30052840']} );
               log("Instrument: " + device.name);
