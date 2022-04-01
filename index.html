@@ -8,7 +8,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
        
-      <h1>Mitutoyo Bluetooth 5.0 Measuring Instruments</h1>
+      <h1>Mitutoyo UWAVE Bluetooth Measuring Instruments</h1>
       <h2><p id="display"></p></h2>
     
     
@@ -45,7 +45,7 @@
               //log("Requesting caliper device");
 
               //const options = {filters: [{ services: ['c1b25000-caaf-6d0e-4c33-7dae30052840']}]}
-              const options = {filters: [{ name: 'SYmi'}], optionalServices: ['c1b25000-caaf-6d0e-4c33-7dae30052840']};
+              const options = {filters: [{ name: 'UWAVE'}], optionalServices: ['7eafd361-f151-4785-b307-47d34ed52c3c']};
               const device = await navigator.bluetooth.requestDevice(options);
               //const device = await navigator.bluetooth.requestDevice( {acceptAllDevices: true,  optionalServices: ['c1b25000-caaf-6d0e-4c33-7dae30052840']} );
               log("Instrument: " + device.name);
@@ -58,18 +58,18 @@
               const server = await device.gatt.connect();
 
               //log('Getting caliper Service...');
-              const service = await server.getPrimaryService('c1b25000-caaf-6d0e-4c33-7dae30052840');
+              const service = await server.getPrimaryService('7eafd361-f151-4785-b307-47d34ed52c3c');
               //log("Got service");
               //console.log(service);
 
-              const notif_characteristics = await service.getCharacteristic("c1b25010-caaf-6d0e-4c33-7dae30052840");
+              const notif_characteristics = await service.getCharacteristic('7eafd361-f151-4785-b307-47d34ed52c3c');
               //log("Notification chararacteristics " + JSON.stringify( notif_characteristics ) );
 
               await notif_characteristics.startNotifications();
               //log("Notifications started")
               notif_characteristics.addEventListener('characteristicvaluechanged', handleNotif);
 
-              const indic_characteristics = await service.getCharacteristic("c1b25010-caaf-6d0e-4c33-7dae30052840");
+              const indic_characteristics = await service.getCharacteristic('7eafd361-f151-4785-b307-47d34ed52c3c');
               //log("Indication characteristics"+  JSON.stringify(indic_characteristics)); 
 
               await indic_characteristics.startNotifications();
@@ -77,7 +77,7 @@
               indic_characteristics.addEventListener('characteristicvaluechanged', handleInd);
              
 
-              const characteristic = await service.getCharacteristic("c1b25010-caaf-6d0e-4c33-7dae30052840");
+              const characteristic = await service.getCharacteristic('7eafd361-f151-4785-b307-47d34ed52c3c');
               var enc = new TextEncoder("utf-8");
               //characteristic.writeValue(enc.encode("?\r"));
               window.btch = characteristic;
