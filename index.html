@@ -45,7 +45,7 @@
               //log("Requesting caliper device");
 
               //const options = {filters: [{ services: ['c1b25000-caaf-6d0e-4c33-7dae30052840']}]}
-              const options = {filters: [{ name: 'UWAVE'}], optionalServices: ['7eafd361-f151-4785-b307-47d34ed52c3c']};
+              const options = {filters: [{ name: 'UWAVE'}], optionalServices: ['7eafd361-f150-4785-b307-47d34ed52c3c']};
               const device = await navigator.bluetooth.requestDevice(options);
               //const device = await navigator.bluetooth.requestDevice( {acceptAllDevices: true,  optionalServices: ['c1b25000-caaf-6d0e-4c33-7dae30052840']} );
               log("Instrument: " + device.name);
@@ -58,7 +58,7 @@
               const server = await device.gatt.connect();
 
               //log('Getting caliper Service...');
-              const service = await server.getPrimaryService('7eafd361-f151-4785-b307-47d34ed52c3c');
+              const service = await server.getPrimaryService('7eafd361-f150-4785-b307-47d34ed52c3c');
               //log("Got service");
               //console.log(service);
 
